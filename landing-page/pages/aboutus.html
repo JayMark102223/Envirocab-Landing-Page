@@ -1,0 +1,501 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnviroCab - About Us</title>
+        <link rel="icon" type="image/png" href="/asset/image/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-60px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal-left.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(60px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal-right.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+            :root {
+        color-scheme: light;
+        --bg-main: #ffffff;
+        --surface-1: #ffffff;
+        --surface-2: #f8fbff;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border-color: #dbe4ff;
+        --input-bg: #ffffff;
+        --ring: #3b82f6;
+        --section-dark-gradient: linear-gradient(155deg, #0f172a 0%, #0b1220 100%);
+      }
+
+      body {
+        background: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      #themeToggle {
+        border: 1px solid var(--border-color);
+        background: var(--surface-1);
+        color: var(--text-main);
+      }
+
+      #themeToggle:hover {
+        background: var(--surface-2);
+      }
+
+      .navbar {
+        background: var(--surface-1) !important;
+        border-bottom: 1px solid color-mix(in srgb, var(--border-color) 75%, transparent);
+      }
+
+      #mobileMenu,
+      #farePanel {
+        background: var(--surface-1) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      #mobileMenu .nav-link,
+      #farePanel h3,
+      #fareResultNav {
+        color: var(--text-main) !important;
+      }
+
+      #farePanel p {
+        color: var(--text-muted) !important;
+      }
+
+      body [class*="bg-white"] {
+        background-color: var(--surface-1) !important;
+      }
+
+      body [class*="bg-[#f8"],
+      body [class*="bg-[#f2"],
+      body [class*="bg-[#eef"],
+      body [class*="bg-[#ec"],
+      body [class*="bg-[#e8"] {
+        background-color: var(--surface-2) !important;
+      }
+
+      body [class*="text-black"],
+      body [class*="text-[#111]"],
+      body [class*="text-[#0f172a]"] {
+        color: var(--text-main) !important;
+      }
+
+      body [class*="text-[#333]"],
+      body [class*="text-[#444]"],
+      body [class*="text-[#555]"],
+      body [class*="text-[#666]"] {
+        color: var(--text-muted) !important;
+      }
+
+      body [class*="border-[#d"],
+      body [class*="border-[#e"] {
+        border-color: color-mix(in srgb, var(--border-color) 78%, transparent) !important;
+      }
+
+      body input,
+      body textarea,
+      body select {
+        background: var(--input-bg) !important;
+        color: var(--text-main) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      body input:focus,
+      body textarea:focus,
+      body select:focus {
+        --tw-ring-color: var(--ring) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-white font-[Inter] text-[#333] antialiased">
+    <nav class="navbar sticky top-0 z-[1000] w-full bg-white py-2 shadow-[0_2px_8px_rgba(0,0,0,0.1)] md:py-4">
+      <div class="relative mx-auto flex max-w-[1400px] items-center justify-between px-4 md:px-8">
+        <div class="logo relative">
+          <img src="/asset/image/logo.png" alt="EnviroCab Logo" class="logo-image h-10 w-[150px] object-contain" />
+        </div>
+
+        <div class="hidden md:block">
+          <ul class="nav-menu flex items-center gap-8 rounded-[80px] bg-[#0352fd] px-6 py-2">
+            <li><a href="/index.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">HOME</a></li>
+            <li><a href="/index.html#about" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">ABOUT</a></li>
+            <li><a href="/pages/career.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">CAREERS</a></li>
+            <li><a href="/pages/service.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">SERVICES</a></li>
+            <li><a href="/index.html#contact" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">CONTACT US</a></li>
+          </ul>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="fareToggleNav" class="rounded-full bg-[#0352fd] px-3 py-2 text-[10px] font-bold text-white transition hover:bg-[#1449c7] sm:px-4 sm:text-xs">
+            <span class="sm:hidden">FARE</span>
+            <span class="hidden sm:inline">FARE ESTIMATOR</span>
+          </button>
+          <button id="menuToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#dbe4ff] text-[#0352fd] md:hidden">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div id="mobileMenu" class="absolute left-4 right-4 top-[calc(100%+8px)] hidden rounded-xl border border-[#dbe4ff] bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] md:hidden">
+          <ul class="space-y-3">
+            <li><a href="/index.html" class="nav-link block text-sm font-semibold text-[#0f172a]">HOME</a></li>
+            <li><a href="/index.html#about" class="nav-link block text-sm font-semibold text-[#0f172a]">ABOUT</a></li>
+            <li><a href="/pages/career.html" class="nav-link block text-sm font-semibold text-[#0f172a]">CAREERS</a></li>
+            <li><a href="/pages/service.html" class="nav-link block text-sm font-semibold text-[#0f172a]">SERVICES</a></li>
+            <li><a href="/index.html#contact" class="nav-link block text-sm font-semibold text-[#0f172a]">CONTACT US</a></li>
+          </ul>
+        </div>
+
+        <div id="farePanel" class="absolute left-2 right-2 top-[calc(100%+8px)] hidden w-auto rounded-xl border border-[#dbe4ff] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.14)] sm:left-auto sm:right-4 sm:w-[min(92vw,420px)]">
+          <h3 class="mb-2 font-[Poppins] text-lg font-extrabold text-[#0f172a]">Quick Fare Estimator</h3>
+          <p class="mb-3 text-xs text-[#666]">For quick reference only.</p>
+          <div class="space-y-2">
+            <input id="pickupNav" type="text" placeholder="Pickup Location" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]" />
+            <input id="dropoffNav" type="text" placeholder="Dropoff Location" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]" />
+            <select id="rideTypeNav" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]">
+              <option value="99">City Ride</option>
+              <option value="149">Eco Plus</option>
+              <option value="399">Hourly</option>
+            </select>
+            <button id="estimateBtnNav" class="w-full rounded-lg bg-[#0352fd] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#1449c7]">Estimate</button>
+            <p id="fareResultNav" class="pt-1 text-center text-sm font-semibold text-[#0f172a]">Estimated fare will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="mx-auto max-w-[1100px] px-4 pb-16 pt-10 md:px-8 md:pt-14">
+      <section class="reveal">
+        <h1 class="mb-10 text-center font-[Poppins] text-4xl font-extrabold tracking-[2px] text-black md:text-5xl">ABOUT US</h1>
+
+        <div class="grid items-center gap-10 text-left md:grid-cols-2">
+          <div class="reveal-left">
+            <img src="/asset/image/logo.png" alt="EnviroCab Logo" class="mb-5 w-[220px] object-contain" />
+            <p class="mb-4 text-base leading-8 text-[#444]">
+              EnviroCab was established in 2021 by young Filipino entrepreneurship driven by their passion for cars, technology and environmental responsibility. EnviroCab continues to grow by embracing innovation and delivering excellent customer service with well-trained professional drivers.
+            </p>
+            <p class="text-base leading-8 text-[#444]">
+              We are proud to be a 100% Filipino owned company, guided by strong values of integrity, teamwork, resilience, and care for our customers.
+            </p>
+          </div>
+
+          <div class="reveal-right space-y-5">
+            <article class="rounded-[24px] border-[3px] border-[#7fff7f] p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
+              <h2 class="mb-2 font-[Poppins] text-2xl font-bold text-[#0033cc]">MISSION</h2>
+              <p class="text-sm leading-7 text-[#444]">To deliver safe, reliable, and technology-driven transport service that empowers Filipino drivers and gives every passenger a smooth and affordable ride experience.</p>
+            </article>
+            <article class="rounded-[24px] border-[3px] border-[#7fff7f] p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
+              <h2 class="mb-2 font-[Poppins] text-2xl font-bold text-[#0033cc]">VISION</h2>
+              <p class="text-sm leading-7 text-[#444]">To become the most trusted Filipino mobility brand known for service excellence, innovation, and long-term commitment to sustainable urban transport.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal mt-12 rounded-2xl bg-[#f8f9fa] px-5 py-10 md:px-8">
+        <div class="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-[#2e7d32]">5,000+</h2>
+            <p class="text-base font-medium text-[#555]">Rides Completed</p>
+          </div>
+          <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-[#2e7d32]">1,200+</h2>
+            <p class="text-base font-medium text-[#555]">Drivers</p>
+          </div>
+          <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-[#2e7d32]">10</h2>
+            <p class="text-base font-medium text-[#555]">Cities Served</p>
+          </div>
+          <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-[#2e7d32]">4.9/5</h2>
+            <p class="text-base font-medium text-[#555]">Customer Rating</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal mt-14">
+        <h2 class="mb-6 text-center font-[Poppins] text-3xl font-extrabold tracking-[1px] text-black">WHY CHOOSE ENVIROCAB</h2>
+        <div class="grid gap-5 md:grid-cols-3">
+          <article class="reveal rounded-2xl border border-[#e5ecff] bg-white p-6 text-center shadow-[0_8px_20px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]">
+            <i class="fa-solid fa-shield-heart mb-3 text-2xl text-[#00b870]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Safety First</h3>
+            <p class="text-sm text-[#555]">Screened drivers, verified trips, and dependable support for every ride.</p>
+          </article>
+          <article class="reveal rounded-2xl border border-[#e5ecff] bg-white p-6 text-center shadow-[0_8px_20px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]">
+            <i class="fa-solid fa-bolt mb-3 text-2xl text-[#00b870]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Fast Booking</h3>
+            <p class="text-sm text-[#555]">Quick booking flow and efficient driver matching in your service area.</p>
+          </article>
+          <article class="reveal rounded-2xl border border-[#e5ecff] bg-white p-6 text-center shadow-[0_8px_20px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]">
+            <i class="fa-solid fa-leaf mb-3 text-2xl text-[#00b870]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Eco-Minded</h3>
+            <p class="text-sm text-[#555]">Built with sustainability in mind while keeping comfort and value.</p>
+          </article>
+        </div>
+      </section>
+<section class="reveal mt-10 rounded-2xl bg-[#0f172a] px-4 py-8 md:px-6">
+  <h2 class="mb-6 text-center font-[Poppins] text-3xl font-extrabold tracking-[1px] text-white">
+    HOW IT WORKS
+  </h2>
+
+  <div class="grid gap-6 md:grid-cols-3">
+    <div class="rounded-xl bg-slate-800 p-6 text-center text-white shadow-lg hover:scale-105 transition">
+      <span class="mb-2 inline-block text-xs font-bold tracking-[1px] text-[#63E6BE]">
+        STEP 1
+      </span>
+      <h3 class="mb-2 text-lg font-semibold">Book Your Ride</h3>
+      <p class="text-sm text-slate-300">
+        Set your pickup and destination in seconds.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-slate-800 p-6 text-center text-white shadow-lg hover:scale-105 transition">
+      <span class="mb-2 inline-block text-xs font-bold tracking-[1px] text-[#63E6BE]">
+        STEP 2
+      </span>
+      <h3 class="mb-2 text-lg font-semibold">Get Matched</h3>
+      <p class="text-sm text-slate-300">
+        Connect with a nearby professional driver quickly.
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-slate-800 p-6 text-center text-white shadow-lg hover:scale-105 transition">
+      <span class="mb-2 inline-block text-xs font-bold tracking-[1px] text-[#63E6BE]">
+        STEP 3
+      </span>
+      <h3 class="mb-2 text-lg font-semibold">Ride Safely</h3>
+      <p class="text-sm text-slate-300">
+        Track your trip and arrive comfortably at your destination.
+      </p>
+    </div>
+  </div>
+</section>
+
+      <section class="reveal mt-14">
+        <h2 class="mb-8 text-center font-[Poppins] text-4xl font-extrabold tracking-[2px] text-black">CORE VALUES</h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
+            <img src="/asset/image/driver.jpg" alt="Professional drivers" class="h-[360px] w-full rounded-md object-cover" />
+            <p class="mt-2 font-bold"><span class="mr-2 text-xl text-[#28a745]">&#10004;</span>Professional and courteous drivers</p>
+          </article>
+          <article class="transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]">
+            <img src="/asset/image/maintained.jpg" alt="Sanitized vehicles" class="h-[360px] w-full rounded-md object-cover" />
+            <p class="mt-2 font-bold"><span class="mr-2 text-xl text-[#28a745]">&#10004;</span>Well-maintained and sanitized vehicles</p>
+          </article>
+          <article class="transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)] md:col-span-2 md:mx-auto md:w-[70%]">
+            <img src="/asset/image/122752410_1145548725843245_7076737318493359844_n.jpg" alt="TNVS Provider" class="h-[360px] w-full rounded-md object-cover" />
+            <p class="mt-2 font-bold"><span class="mr-2 text-xl text-[#28a745]">&#10004;</span>Licensed and fully compliant TNVS provider</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-black px-5 py-5 text-white">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="min-w-[250px] flex-1">
+          <img
+            src="/asset/image/logo.png"
+            alt="EnviroCab Logo"
+            class="h-10 w-[150px] object-contain"
+          />
+          <p class="mt-2 text-sm leading-6">Your trusted TNVS partner for safe, reliable, and comfortable transportation services.</p>
+        </div>
+
+        <div class="min-w-[150px] flex-1">
+          <h3 class="mb-2">Quick Links</h3>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="text-white">Contact Us</a></li>
+            <li><a href="#" class="text-white">Privacy Policy</a></li>
+            <li><a href="#" class="text-white">Terms and Conditions</a></li>
+            <li><a href="#" class="text-white">Help Center</a></li>
+          </ul>
+        </div>
+
+        <div class="min-w-[150px] flex-1 text-left md:text-right lg:text-left">
+          <h3 class="mb-2">Connect with Us!</h3>
+          <div class="text-xl">
+            <a href="#" class="mr-2 text-[#63E6BE]"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="mr-2 text-[#63E6BE]"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-[#63E6BE]"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div class="min-w-[150px] flex-1">
+          <h3 class="mb-2">Our Location</h3>
+          <div class="mb-2 h-[130px] w-full overflow-hidden rounded-lg">
+            <iframe
+              src="https://www.google.com/maps?q=EnviroCab%20-%2033%20King%20Alexander%20Street,%20Novaliches,%20Quezon%20City,%20Metro%20Manila,%20Philippines&output=embed"
+              loading="lazy"
+              allowfullscreen=""
+              class="h-full w-full border-0"
+            ></iframe>
+          </div>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=33+King+Alexander+Street,+Novaliches,+Quezon+City,+Metro+Manila,+Philippines"
+            target="_blank"
+            class="inline-block rounded-[15px] bg-[#00D084] px-3 py-1.5 text-xs font-semibold text-black"
+          >
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-center gap-2 border-t border-[#333] pt-4 text-center text-xs">
+        <span>Copyright &copy; 2021</span>
+        <img src="/asset/image/logo.png" alt="EnviroCab Logo" class="h-4 w-auto object-contain opacity-80" />
+        <span>- All Rights Reserved.</span>
+      </div>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const fareToggleNav = document.getElementById("fareToggleNav");
+      const farePanel = document.getElementById("farePanel");
+      const estimateBtnNav = document.getElementById("estimateBtnNav");
+      const rideTypeNav = document.getElementById("rideTypeNav");
+      const pickupNav = document.getElementById("pickupNav");
+      const dropoffNav = document.getElementById("dropoffNav");
+      const fareResultNav = document.getElementById("fareResultNav");
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          if (farePanel) farePanel.classList.add("hidden");
+        });
+      }
+
+      document.querySelectorAll("#mobileMenu .nav-link").forEach((link) => {
+        link.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      if (fareToggleNav && farePanel) {
+        fareToggleNav.addEventListener("click", function () {
+          farePanel.classList.toggle("hidden");
+          if (mobileMenu) mobileMenu.classList.add("hidden");
+        });
+      }
+
+      document.addEventListener("click", function (event) {
+        const clickInsideMenu = mobileMenu && mobileMenu.contains(event.target);
+        const clickInsideMenuToggle = menuToggle && menuToggle.contains(event.target);
+        const clickInsideFare = farePanel && farePanel.contains(event.target);
+        const clickInsideFareToggle = fareToggleNav && fareToggleNav.contains(event.target);
+
+        if (mobileMenu && !clickInsideMenu && !clickInsideMenuToggle) {
+          mobileMenu.classList.add("hidden");
+        }
+        if (farePanel && !clickInsideFare && !clickInsideFareToggle) {
+          farePanel.classList.add("hidden");
+        }
+      });
+
+      if (estimateBtnNav) {
+        estimateBtnNav.addEventListener("click", function () {
+          const base = Number(rideTypeNav.value || 99);
+          const distanceFactor = Math.max(1, ((pickupNav.value.length + dropoffNav.value.length) % 7) + 1);
+          const estimate = base + distanceFactor * 12;
+          fareResultNav.textContent = `Estimated fare: PHP ${estimate} - ${estimate + 40}`;
+        });
+      }
+
+      function initNavbarGsap() {
+        if (typeof gsap === "undefined") return;
+
+        const tl = gsap.timeline();
+
+        tl.from(".navbar", {
+          y: -100,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        })
+          .from(
+            ".logo-image",
+            {
+              x: -50,
+              opacity: 0,
+              duration: 0.8,
+              ease: "power2.out",
+            },
+            "-=0.5",
+          )
+          .from(
+            ".nav-link",
+            {
+              y: -20,
+              opacity: 0,
+              duration: 0.6,
+              stagger: 0.15,
+              ease: "power2.out",
+            },
+            "-=0.5",
+          );
+      }
+
+      function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        for (let i = 0; i < reveals.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = reveals[i].getBoundingClientRect().top;
+          const elementVisible = 100;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add('active');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', revealOnScroll);
+      window.addEventListener('load', function () {
+        revealOnScroll();
+        initNavbarGsap();
+      });
+    </script>
+  </body>
+</html>
+

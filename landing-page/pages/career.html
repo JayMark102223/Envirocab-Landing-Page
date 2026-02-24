@@ -1,0 +1,678 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnviroCab - Careers</title>
+        <link rel="icon" type="image/png" href="/asset/image/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 420px;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s ease;
+        opacity: 0;
+        z-index: 0;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        object-fit: cover;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        z-index: 3;
+      }
+
+      .slide.active img {
+        animation: floatSoft 4s ease-in-out infinite;
+      }
+
+      .slide.prev {
+        opacity: 0.6;
+        transform: translate(-150%, -50%) scale(0.8);
+        z-index: 2;
+      }
+
+      .slide.next {
+        opacity: 0.6;
+        transform: translate(50%, -50%) scale(0.8);
+        z-index: 2;
+      }
+
+      .slide.hidden {
+        display: block !important;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+        z-index: 1;
+      }
+
+      .motion-init {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.65, 0.2, 1);
+      }
+
+      .motion-init.in-view {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes floatSoft {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 16px rgba(0, 208, 132, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 208, 132, 0);
+        }
+      }
+
+      .form-button {
+        animation: pulseGlow 2.6s infinite;
+      }
+
+      @media (max-width: 768px) {
+        .slide {
+          width: 220px;
+          height: 320px;
+        }
+
+        .slide.prev {
+          transform: translate(-125%, -50%) scale(0.8);
+        }
+
+        .slide.next {
+          transform: translate(25%, -50%) scale(0.8);
+        }
+      }
+
+            :root {
+        color-scheme: light;
+        --bg-main: #ffffff;
+        --surface-1: #ffffff;
+        --surface-2: #f8fbff;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border-color: #dbe4ff;
+        --input-bg: #ffffff;
+        --ring: #3b82f6;
+        --section-dark-gradient: linear-gradient(155deg, #0f172a 0%, #0b1220 100%);
+      }
+
+      body {
+        background: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      .navbar {
+        background: var(--surface-1) !important;
+        border-bottom: 1px solid color-mix(in srgb, var(--border-color) 75%, transparent);
+      }
+
+      #mobileMenu,
+      #farePanel {
+        background: var(--surface-1) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      #mobileMenu .nav-link,
+      #farePanel h3,
+      #fareResultNav {
+        color: var(--text-main) !important;
+      }
+
+      #farePanel p {
+        color: var(--text-muted) !important;
+      }
+
+      body [class*="border-[#d"],
+      body [class*="border-[#e"] {
+        border-color: color-mix(in srgb, var(--border-color) 78%, transparent) !important;
+      }
+
+      body input,
+      body textarea,
+      body select {
+        background: var(--input-bg) !important;
+        color: var(--text-main) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      body input:focus,
+      body textarea:focus,
+      body select:focus {
+        --tw-ring-color: var(--ring) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-white font-[Inter] text-[#333] antialiased">
+    <nav class="navbar sticky top-0 z-[1000] w-full bg-white py-2 shadow-[0_2px_8px_rgba(0,0,0,0.1)] md:py-4">
+      <div class="relative mx-auto flex max-w-[1400px] items-center justify-between px-4 md:px-8">
+        <div class="logo relative">
+          <img src="/asset/image/logo.png" alt="EnviroCab Logo" class="logo-image h-10 w-[150px] object-contain" />
+        </div>
+
+        <div class="hidden md:block">
+          <ul class="nav-menu flex items-center gap-8 rounded-[80px] bg-[#0352fd] px-6 py-2">
+            <li><a href="/index.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">HOME</a></li>
+            <li><a href="/index.html#about" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">ABOUT</a></li>
+            <li><a href="/pages/career.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">CAREERS</a></li>
+            <li><a href="/pages/service.html" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">SERVICES</a></li>
+            <li><a href="/index.html#contact" class="nav-link text-sm font-semibold tracking-[0.5px] text-white transition-colors hover:text-[#00D084]">CONTACT US</a></li>
+          </ul>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="fareToggleNav" class="rounded-full bg-[#0352fd] px-3 py-2 text-[10px] font-bold text-white transition hover:bg-[#1449c7] sm:px-4 sm:text-xs">
+            <span class="sm:hidden">FARE</span>
+            <span class="hidden sm:inline">FARE ESTIMATOR</span>
+          </button>
+          <button id="menuToggle" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#dbe4ff] text-[#0352fd] md:hidden">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div id="mobileMenu" class="absolute left-4 right-4 top-[calc(100%+8px)] hidden rounded-xl border border-[#dbe4ff] bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.12)] md:hidden">
+          <ul class="space-y-3">
+            <li><a href="/index.html" class="nav-link block text-sm font-semibold text-[#0f172a]">HOME</a></li>
+            <li><a href="/index.html#about" class="nav-link block text-sm font-semibold text-[#0f172a]">ABOUT</a></li>
+            <li><a href="/pages/career.html" class="nav-link block text-sm font-semibold text-[#0f172a]">CAREERS</a></li>
+            <li><a href="/pages/service.html" class="nav-link block text-sm font-semibold text-[#0f172a]">SERVICES</a></li>
+            <li><a href="/index.html#contact" class="nav-link block text-sm font-semibold text-[#0f172a]">CONTACT US</a></li>
+          </ul>
+        </div>
+
+        <div id="farePanel" class="absolute left-2 right-2 top-[calc(100%+8px)] hidden w-auto rounded-xl border border-[#dbe4ff] bg-white p-4 shadow-[0_10px_28px_rgba(0,0,0,0.14)] sm:left-auto sm:right-4 sm:w-[min(92vw,420px)]">
+          <h3 class="mb-2 font-[Poppins] text-lg font-extrabold text-[#0f172a]">Quick Fare Estimator</h3>
+          <p class="mb-3 text-xs text-[#666]">For quick reference only.</p>
+          <div class="space-y-2">
+            <input id="pickupNav" type="text" placeholder="Pickup Location" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]" />
+            <input id="dropoffNav" type="text" placeholder="Dropoff Location" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]" />
+            <select id="rideTypeNav" class="w-full rounded-lg border border-[#d6def5] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0352fd]">
+              <option value="99">City Ride</option>
+              <option value="149">Eco Plus</option>
+              <option value="399">Hourly</option>
+            </select>
+            <button id="estimateBtnNav" class="w-full rounded-lg bg-[#0352fd] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#1449c7]">Estimate</button>
+            <p id="fareResultNav" class="pt-1 text-center text-sm font-semibold text-[#0f172a]">Estimated fare will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="reveal bg-white px-4 py-16 md:px-8">
+      <div class="mx-auto max-w-[1200px]">
+        <h2 class="mb-8 text-center font-[Poppins] text-3xl font-extrabold text-[#0f172a] md:text-4xl">Open Positions</h2>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Driver Partner</h3>
+            <p class="mb-4 text-sm text-[#555]">Serve passengers safely and professionally across active city routes.</p>
+            <button onclick="window.location.href='/pages/form.html'" class="rounded-full bg-[#0352fd] px-4 py-2 text-xs font-semibold text-white">Apply</button>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Dispatcher</h3>
+            <p class="mb-4 text-sm text-[#555]">Coordinate bookings and support drivers for smoother daily operations.</p>
+            <button onclick="window.location.href='/pages/form.html'" class="rounded-full bg-[#0352fd] px-4 py-2 text-xs font-semibold text-white">Apply</button>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Customer Support</h3>
+            <p class="mb-4 text-sm text-[#555]">Help riders and drivers with inquiries and real-time trip concerns.</p>
+            <button onclick="window.location.href='/pages/form.html'" class="rounded-full bg-[#0352fd] px-4 py-2 text-xs font-semibold text-white">Apply</button>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Fleet Operations</h3>
+            <p class="mb-4 text-sm text-[#555]">Monitor vehicle readiness, compliance, and maintenance schedules.</p>
+            <button onclick="window.location.href='/pages/form.html'" class="rounded-full bg-[#0352fd] px-4 py-2 text-xs font-semibold text-white">Apply</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<section class="reveal bg-gradient-to-b from-white to-[#f8f9fa] px-4 py-16 md:px-8">
+  <div class="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-2">
+
+    <!-- LEFT CARD -->
+    <div class="rounded-2xl border border-[#e5ecff] bg-white p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+      <h2 class="mb-6 font-[Poppins] text-2xl font-extrabold text-[#0f172a]">
+        Basic Requirements
+      </h2>
+
+      <ul class="space-y-4 text-sm text-[#444]">
+
+        <!-- Item -->
+        <li class="flex items-start">
+          <svg class="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-[#00B870]" 
+               fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Valid professional or non-professional driver's license</span>
+        </li>
+
+        <li class="flex items-start">
+          <svg class="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-[#00B870]" 
+               fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>At least 1 year driving experience (preferred)</span>
+        </li>
+
+        <li class="flex items-start">
+          <svg class="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-[#00B870]" 
+               fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>NBI/Police clearance and government IDs</span>
+        </li>
+
+        <li class="flex items-start">
+          <svg class="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-[#00B870]" 
+               fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Good communication and customer service skills</span>
+        </li>
+
+        <li class="flex items-start">
+          <svg class="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-[#00B870]" 
+               fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>Commitment to safety and company standards</span>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="rounded-2xl bg-[#0f172a] p-6 text-white shadow-[0_8px_20px_rgba(0,0,0,0.1)]">
+      <h2 class="mb-6 font-[Poppins] text-2xl font-extrabold">
+        Hiring Process
+      </h2>
+
+      <ol class="space-y-4 text-sm">
+
+        <li class="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+          <span class="mr-2 font-bold text-[#63E6BE]">Step 1:</span>
+          Submit your application form online.
+        </li>
+
+        <li class="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+          <span class="mr-2 font-bold text-[#63E6BE]">Step 2:</span>
+          Initial screening and document verification.
+        </li>
+
+        <li class="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+          <span class="mr-2 font-bold text-[#63E6BE]">Step 3:</span>
+          Interview and quick orientation schedule.
+        </li>
+
+        <li class="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
+          <span class="mr-2 font-bold text-[#63E6BE]">Step 4:</span>
+          Onboarding and start driving with EnviroCab.
+        </li>
+
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+    <section id="home" class="reveal flex min-h-[100svh] flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fa] to-white px-4 py-10 md:min-h-screen md:px-8">
+      <div class="slider-container relative flex h-[520px] w-full max-w-[900px] items-center justify-center overflow-hidden">
+        <button class="arrow prev absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black px-3 py-2 text-2xl text-white transition-colors hover:bg-[#333] md:px-4">
+          &#10094;
+        </button>
+
+        <div class="slider">
+          <div class="slide active">
+            <img src="/asset/image/image1.jpg" alt="Career Slide 1" />
+          </div>
+          <div class="slide">
+            <img src="/asset/image/image1.jpg" alt="Career Slide 2" />
+          </div>
+          <div class="slide">
+            <img src="/asset/image/image1.jpg" alt="Career Slide 3" />
+          </div>
+          <div class="slide">
+            <img src="/asset/image/image1.jpg" alt="Career Slide 4" />
+          </div>
+          <div class="slide">
+            <img src="/asset/image/image1.jpg" alt="Career Slide 5" />
+          </div>
+        </div>
+
+        <button class="arrow next absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black px-3 py-2 text-2xl text-white transition-colors hover:bg-[#333] md:px-4">
+          &#10095;
+        </button>
+      </div>
+
+      <button
+        class="form-button mt-6 rounded-full bg-[#00D084] px-10 py-3 text-[0.95rem] font-bold tracking-[0.5px] text-white shadow-[0_4px_15px_rgba(0,208,132,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B870] hover:shadow-[0_6px_20px_rgba(0,208,132,0.4)]"
+        onclick="window.location.href='/pages/form.html'"
+      >
+        APPLY NOW!
+      </button>
+    </section>
+
+    <section class="reveal bg-white px-4 py-16 md:px-8">
+      <div class="mx-auto max-w-[1200px]">
+        <h2 class="mb-8 text-center font-[Poppins] text-3xl font-extrabold text-[#0f172a] md:text-4xl">Benefits &amp; Perks</h2>
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <i class="fa-solid fa-wallet mb-3 text-2xl text-[#0352fd]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Competitive Earnings</h3>
+            <p class="text-sm text-[#555]">Transparent rates with opportunities to increase income through completed trips.</p>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <i class="fa-solid fa-gift mb-3 text-2xl text-[#0352fd]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Performance Incentives</h3>
+            <p class="text-sm text-[#555]">Earn bonus incentives based on reliability, ratings, and ride volume.</p>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <i class="fa-solid fa-clock mb-3 text-2xl text-[#0352fd]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Flexible Schedule</h3>
+            <p class="text-sm text-[#555]">Choose shifts that fit your lifestyle while staying productive on the road.</p>
+          </article>
+          <article class="rounded-2xl border border-[#e5ecff] bg-[#f8fbff] p-6 shadow-[0_8px_20px_rgba(0,0,0,0.05)]">
+            <i class="fa-solid fa-user-graduate mb-3 text-2xl text-[#0352fd]"></i>
+            <h3 class="mb-2 text-lg font-bold text-[#0f172a]">Training &amp; Support</h3>
+            <p class="text-sm text-[#555]">Get onboarding guidance, operational support, and continuous training.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal bg-gradient-to-b from-[#f8f9fa] to-white px-4 py-10 md:px-8 md:py-12">
+      <div class="mx-auto max-w-[1000px]">
+        <h2 class="mb-8 text-center font-[Poppins] text-3xl font-extrabold text-[#0f172a] md:text-4xl">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">How long is the application process?</summary>
+            <p class="mt-2 text-sm text-[#555]">Most applications are processed within a few business days, depending on document completeness and interview availability.</p>
+          </details>
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">What documents should I prepare?</summary>
+            <p class="mt-2 text-sm text-[#555]">Prepare your valid driver's license, government IDs, and background clearances before applying for faster screening.</p>
+          </details>
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">Do you offer support after onboarding?</summary>
+            <p class="mt-2 text-sm text-[#555]">Yes, our operations and support teams assist drivers with app, trip, and policy concerns after onboarding.</p>
+          </details>
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">Can I choose my own schedule?</summary>
+            <p class="mt-2 text-sm text-[#555]">Yes, schedules are flexible and can be adjusted based on your preferred active hours and location demand.</p>
+          </details>
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">Is prior taxi or TNVS experience required?</summary>
+            <p class="mt-2 text-sm text-[#555]">Not always. Relevant driving or customer service experience is preferred, but qualified applicants may still proceed through screening and training.</p>
+          </details>
+          <details class="rounded-xl border border-[#dbe4ff] bg-white p-4">
+            <summary class="cursor-pointer font-semibold text-[#0f172a]">How will I know if I passed the screening?</summary>
+            <p class="mt-2 text-sm text-[#555]">Our team will contact you through your registered mobile number or email with the next steps, interview schedule, or onboarding instructions.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-[#0a0a0a] px-5 pb-4 pt-9 text-white">
+      <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <img
+            src="/asset/image/logo.png"
+            alt="EnviroCab Logo"
+            class="h-10 w-[150px] object-contain"
+          />
+          <p class="mt-2 text-[13px] leading-[1.5] text-[#bbb]">
+            Your trusted TNVS partner for safe, reliable, and comfortable transportation services.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="mb-2 text-sm font-semibold">Quick Links</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="text-[13px] text-[#bbb] transition-colors duration-300 hover:text-[#00D084]">Contact Us</a></li>
+            <li><a href="#" class="text-[13px] text-[#bbb] transition-colors duration-300 hover:text-[#00D084]">Privacy Policy</a></li>
+            <li><a href="#" class="text-[13px] text-[#bbb] transition-colors duration-300 hover:text-[#00D084]">Terms and Conditions</a></li>
+            <li><a href="#" class="text-[13px] text-[#bbb] transition-colors duration-300 hover:text-[#00D084]">Help Center</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="mb-2 text-sm font-semibold">Connect with Us!</h3>
+          <div class="space-x-2">
+            <a href="#" class="text-base text-[#63E6BE]"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-base text-[#63E6BE]"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-base text-[#63E6BE]"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="mb-2 text-sm font-semibold">Our Location</h3>
+          <div class="mb-2 h-[130px] w-full overflow-hidden rounded-lg">
+            <iframe
+              src="https://www.google.com/maps?q=EnviroCab%20-%2033%20King%20Alexander%20Street,%20Novaliches,%20Quezon%20City,%20Metro%20Manila,%20Philippines&output=embed"
+              loading="lazy"
+              allowfullscreen=""
+              class="h-full w-full border-0"
+            ></iframe>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=33+King+Alexander+Street,+Novaliches,+Quezon+City,+Metro+Manila,+Philippines"
+            target="_blank"
+            class="inline-block rounded-[15px] bg-[#00D084] px-3 py-1.5 text-xs font-semibold text-black"
+          >
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-5 flex items-center justify-center gap-2 border-t border-white/10 pt-3 text-center text-[11px] text-[#666]">
+        <span>Copyright &copy; 2021</span>
+        <img src="/asset/image/logo.png" alt="EnviroCab Logo" class="h-4 w-auto object-contain opacity-80" />
+        <span>- All Rights Reserved.</span>
+      </div>
+    </footer>
+
+    <a
+      href="/pages/form.html"
+      class="fixed bottom-4 left-4 right-4 z-50 rounded-full bg-[#00D084] px-6 py-3 text-center text-sm font-bold tracking-[0.5px] text-white shadow-[0_8px_20px_rgba(0,208,132,0.45)] md:hidden"
+    >
+      APPLY NOW
+    </a>
+
+    <script src="/asset/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tl = gsap.timeline();
+
+        tl.from(".navbar", {
+          y: -100,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        })
+          .from(
+            ".logo-image",
+            {
+              x: -50,
+              opacity: 0,
+              duration: 0.8,
+              ease: "power2.out",
+            },
+            "-=0.5",
+          )
+          .from(
+            ".nav-link",
+            {
+              y: -20,
+              opacity: 0,
+              duration: 0.6,
+              stagger: 0.15,
+              ease: "power2.out",
+            },
+            "-=0.5",
+          );
+          
+      const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const fareToggleNav = document.getElementById("fareToggleNav");
+        const farePanel = document.getElementById("farePanel");
+        const estimateBtnNav = document.getElementById("estimateBtnNav");
+        const rideTypeNav = document.getElementById("rideTypeNav");
+        const pickupNav = document.getElementById("pickupNav");
+        const dropoffNav = document.getElementById("dropoffNav");
+        const fareResultNav = document.getElementById("fareResultNav");
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener("click", function () {
+            mobileMenu.classList.toggle("hidden");
+            if (farePanel) farePanel.classList.add("hidden");
+          });
+        }
+
+        document.querySelectorAll("#mobileMenu .nav-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
+        if (fareToggleNav && farePanel) {
+          fareToggleNav.addEventListener("click", function () {
+            farePanel.classList.toggle("hidden");
+            if (mobileMenu) mobileMenu.classList.add("hidden");
+          });
+        }
+
+        document.addEventListener("click", function (event) {
+          const clickInsideMenu = mobileMenu && mobileMenu.contains(event.target);
+          const clickInsideMenuToggle = menuToggle && menuToggle.contains(event.target);
+          const clickInsideFare = farePanel && farePanel.contains(event.target);
+          const clickInsideFareToggle = fareToggleNav && fareToggleNav.contains(event.target);
+
+          if (mobileMenu && !clickInsideMenu && !clickInsideMenuToggle) {
+            mobileMenu.classList.add("hidden");
+          }
+          if (farePanel && !clickInsideFare && !clickInsideFareToggle) {
+            farePanel.classList.add("hidden");
+          }
+        });
+
+        if (estimateBtnNav) {
+          estimateBtnNav.addEventListener("click", function () {
+            const base = Number(rideTypeNav.value || 99);
+            const distanceFactor = Math.max(1, ((pickupNav.value.length + dropoffNav.value.length) % 7) + 1);
+            const estimate = base + distanceFactor * 12;
+            fareResultNav.textContent = `Estimated fare: PHP ${estimate} - ${estimate + 40}`;
+          });
+        }
+
+        const animatedEls = document.querySelectorAll(
+          "section h2, section article, section details, .slider-container, .form-button"
+        );
+
+        animatedEls.forEach((el, index) => {
+          el.classList.add("motion-init");
+          el.style.transitionDelay = `${(index % 6) * 70}ms`;
+        });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        animatedEls.forEach((el) => observer.observe(el));
+
+        function revealOnScroll() {
+          const reveals = document.querySelectorAll(".reveal");
+
+          reveals.forEach((el) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 100;
+
+            if (elementTop < windowHeight - elementVisible) {
+              el.classList.add("active");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+      });
+    </script>
+  </body>
+</html>
+
+
+
